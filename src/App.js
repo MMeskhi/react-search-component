@@ -288,6 +288,7 @@ function App() {
 
       setUser(userInfo);
       setAccessToken(token);
+      setSubmitClicked(false);
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(userInfo));
     } catch (e) {
