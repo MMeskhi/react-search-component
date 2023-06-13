@@ -138,7 +138,7 @@ const TextWarn = styled.h4`
   gap: 4px;
 `;
 
-const TextWarnMM = styled.h4`
+const TextWarnMM = styled.span`
   font-weight: bold;
 `;
 
@@ -321,6 +321,13 @@ function App() {
     }
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      handleSearch();
+    }
+  };
+
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
@@ -377,8 +384,9 @@ function App() {
                       placeholder="mymarket"
                       value={keyword}
                       onChange={(e) => setKeyword(e.target.value)}
+                      onKeyPress={handleKeyPress}
                     />
-                    <SearchButton type="submit" onClick={handleSearch}>
+                    <SearchButton type="button" onClick={handleSearch}>
                       <img src={searchIcon} alt="Search" />
                     </SearchButton>
                   </Search>
